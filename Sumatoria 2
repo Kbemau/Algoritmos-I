@@ -1,0 +1,24 @@
+// Sumatoria los primeros N impares.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include "conio.h"
+#include "iostream"
+
+using namespace std;
+
+int main()
+{int N,s,i,t,cont;
+cout<< "introducir cuantos numeros (N) : ";
+	cin>> N;
+	s=1;
+	cont=1;
+	for(i=1;i<N;i++)
+	{  
+		s=s+(i*2+1);
+	}			
+	cout<<"La suma es" << s;
+	getch();
+    	return 0;
+}
+
