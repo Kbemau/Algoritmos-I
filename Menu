@@ -1,0 +1,67 @@
+Algoritmos-I
+============
+
+Trabajos de algoritmos
+// Menu program.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include "conio.h"
+#include "iostream"
+  using namespace std;
+int main()
+{ int N,s,i,C,cont;
+do(N>0)
+			{
+				    cout<<   "MENU";
+					cout<< "Case 1 = Sumar hasta el Num N"; 
+					cout<< "Case 2 = Sumar solo num Impares"; 
+					cout<< "Case 3 = Sumatoria hasta q sale numero negativo";
+					cin>> C;
+				switch (C){
+					case '1':
+									   cout<< "introducir N";
+								 cin>> N;
+								 s=0;
+								 for(i=1;i<=N;i++)
+								 if(i%2!=0)
+								 s=s+i;
+								 cout<<"La suma es" << s;
+				   break;
+				    
+				   case '2':
+								   cout<< "introducir cuantos numeros (N) : ";
+								cin>> N;
+								s=1;
+								cont=1;
+								for(i=1;i<N;i++)
+								{
+								s=s+(i*2+1);
+								}
+								cout<<"La suma es" << s;
+					break;
+
+				   case '3':
+									   cout<< "introducir cuantos numeros (N) : ";
+								cin>> N;
+								s=1;
+								cont=1;
+								for(i=1;i<N;i++)
+								{
+								s=s+(i*2+1);
+								}
+								cout<<"La suma es" << s;
+					break;
+				   case '0':
+
+						cout<<"error de opcion";
+				}
+			}
+				while(N!=0)
+					{
+					};
+		getch(); 
+			return 0;
+}
+
+
