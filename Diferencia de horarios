@@ -1,4 +1,24 @@
-Algoritmos-I
-============
+// Horarios.cpp : Defines the entry point for the console application.
+//
 
-Trabajos de algoritmos
+#include "stdafx.h"
+#include "conio.h"
+#include <iostream>
+
+using namespace std;
+
+int main()
+{int HH1 , MM1, SS1, HH2,MM2,SS2,HHt,MMt, SSt, Dif;
+cout<< "ingrese Hora 1";
+ cin>>HH1 >>MM1 >>SS1;
+cout<< "ingrese Hora 2";
+ cin<< HH2 >>MM2 >>SS2;
+
+ HHt = HH1-HH2;
+ MMt = MM1-MM2;
+ SSt = SS1-SS2;
+ cout<< "Dif=" <<HHt : << MMt: <<SSt;
+ 	return 0;
+}
+
+
