@@ -1,0 +1,99 @@
+Proyecto.cpp : Listado Secuencial
+#include"stdafx.h"
+#include"stdio.h"
+#include"conio.h"
+#include"stdlib.h"
+#include<string>
+#include<iostream>
+
+using namespace std;
+void alta_secuencial(void);
+struct tipo_registro{
+    int no_prod;
+    char descrip[30];
+    int cantidad;
+    float precio;
+    char garantia;
+};
+
+FILE *alias;
+tipo_registro Registro;
+
+void alta_secuencial(void);
+void LISTADO_SECUENCIAL(void);
+
+void main(void)
+{
+    FILE*alias;
+    alta_secuencial();
+	LISTADO_SECUENCIAL();
+    _getch();
+}
+
+void alta_secuencial(void)
+{
+		int no_prod;
+		system("cls");
+		cout << "\n\rALTAS DE REGISTROS DE PRODUCTOS";
+		alias=fopen("PRODUCTO.SEC","rb+");
+		if(alias==NULL)
+		alias=fopen("PRODUCTO.SEC","wb"); 
+		cout << "\n\n\n\rNumero de producto: "; 
+		cin >> no_prod;
+		fread(&Registro,sizeof(Registro),1,alias);
+		while(!feof(alias)) 
+		{
+		if(Registro.no_prod==no_prod)
+		{
+		cout << "\n\n\n\rRegistro duplicado !!!";
+		fclose(alias);
+		getch();
+		return;
+		}
+		fread(&Registro,sizeof(Registro),1,alias);
+		}
+		getchar;
+		cout << "\n\rDescripcion: "; gets(Registro.descrip);
+		getchar;
+		cout << "\n\rCantidad : "; cin >> Registro.cantidad;
+		cout << "\n\rPrecio : "; cin >> Registro.precio;
+		do
+		{
+		cout << "\n\rGarantia : "; Registro.garantia=toupper(getche());
+		}while(Registro.garantia!='S' && Registro.garantia!='N');
+		Registro.no_prod=no_prod;
+		fwrite(&Registro,sizeof(Registro),1,alias); 
+		fclose(alias); 
+		cout << "\n\n\n\rProducto registrado !!!";
+		cout << "\n\r<<< Oprima cualquier tecla para continuar >>>";
+		getch();
+		return;
+}
+
+void LISTADO_SECUENCIAL(void)
+{
+system("cls");
+cout << "\n\rLISTADO DE REGISTROS DE PRODUCTOS";
+alias=fopen("PRODUCTO.SEC","rb");
+if(alias==NULL)
+{
+cout << "\n\n\n\rNo existe el archivo !!!";
+cout << "\n\r<<< Oprima cualquier tecla para continuar >>>";
+getch();
+return;
+}
+cout << "\n\rNo Prod Descripcion Cantidad Precio Garantia";
+cout << "\n\r------------------------------------------------------------------------";
+fread(&Registro,sizeof(Registro),1,alias);
+while(!feof(alias))
+{
+printf("\n\r%3d\t%30s\t%3d\t\t$%4.2f\t%c",Registro.no_prod,Registro.descrip,Registro.cantidad,Registro.precio,Registro.garantia);
+fread(&Registro,sizeof(Registro),1,alias);
+}
+fclose(alias); 
+cout << "\n\r------------------------------------------------------------------------";
+cout << "\n\rFin del listado !!!";
+cout << "\n\r<<< Oprima cualquier tecla para continuar >>>";
+getch();
+return;
+}
